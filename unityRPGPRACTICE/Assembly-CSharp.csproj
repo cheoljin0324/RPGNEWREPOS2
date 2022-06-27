@@ -99,6 +99,7 @@
     <Compile Include="Assets\Script\Trap\CylinderTrap1.cs" />
     <Compile Include="Assets\Script\Blade and Skill\GreenBlade.cs" />
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\FreeCameraLogic.cs" />
+    <Compile Include="Assets\Script\PlayerUIManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\uchwch\Toon\Shader\Toon_DoubleShadeWithFeather_Mobile_TransClipping_StencilMask.shader" />

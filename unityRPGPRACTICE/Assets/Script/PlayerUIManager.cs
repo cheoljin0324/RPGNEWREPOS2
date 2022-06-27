@@ -52,6 +52,7 @@ public class PlayerUIManager : MonoBehaviour
     public void RESTART()
     {
         Destroy(GameManager.Instance.gameObject);
+        Destroy(GameObject.Find("[DOTween]"));
         SceneManager.LoadScene("GameStart");
 
     }

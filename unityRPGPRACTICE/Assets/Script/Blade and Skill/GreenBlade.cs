@@ -51,7 +51,7 @@ public class GreenBlade : AttackBlade
         float Setx = Input.GetAxis("Vertical");
         float Sety = Input.GetAxis("Horizontal");
         Debug.Log(PlayerTransform.position);
-        PlayerTransform.DOMove(new Vector3(PlayerTransform.position.x+(Sety*10), PlayerTransform.position.y, PlayerTransform.position.z+(Setx*10)),0.5f,false);
+        PlayerTransform.DOMove(new Vector3(PlayerTransform.localPosition.x+(Sety*10), PlayerTransform.position.y, PlayerTransform.localPosition.z+(Setx*10)),0.5f,false);
         Debug.Log(PlayerTransform.position);
         StartCoroutine(Copy());
         coolTime = 8.0f;

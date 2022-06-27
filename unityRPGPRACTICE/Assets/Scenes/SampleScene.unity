@@ -23938,7 +23938,7 @@ PrefabInstance:
     - target: {fileID: 6787364163173320913, guid: 64c9d96775079344fac674889078804c, type: 3}
       propertyPath: PlayerTransform
       value: 
-      objectReference: {fileID: 1489564257}
+      objectReference: {fileID: 0}
     - target: {fileID: 7145618838423334960, guid: 64c9d96775079344fac674889078804c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.145

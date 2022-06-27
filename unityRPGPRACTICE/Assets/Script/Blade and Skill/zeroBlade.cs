@@ -69,6 +69,10 @@ public class zeroBlade : AttackBlade
         {
             if (PlayerT.isAttack == true)
             {
+                if (other == null)
+                {
+                    return;
+                }
                 CameraShake.CameraShaking();
                 other.gameObject.SendMessage("Damage", PlayerT.attack);
             }

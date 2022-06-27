@@ -49,6 +49,7 @@ public class EnemyTest : MonoBehaviour
 
     void Start()
     {
+        hp += GameManager.Instance.userData.nowStage * 100;
         //Ã¹ ¸ðµå
         enemyState = EnemyState.Idle;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -80,7 +81,7 @@ public class EnemyTest : MonoBehaviour
         hp -= damage;
         if (hp < 0)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             GameObject.Find("EnemyManager").GetComponent<EnemyManager>().DelEnemy();
             GameManager.Instance.userData.coin += SetCoin;
             GameManager.Instance.EndState();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class BossEnemyScript : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class BossEnemyScript : MonoBehaviour
     private GameObject darkSword2;
     private Vector3 darkSwordTransform;
     private Vector3 darkSwordTransform2;
+
+    private GameObject RestartButton;
 
     public GameObject CanvasMap;
     public GameObject DamageText;
@@ -26,6 +29,8 @@ public class BossEnemyScript : MonoBehaviour
 
     private void Start()
     {
+        RestartButton = GameObject.Find("EndUI");
+        hp += GameManager.Instance.userData.nowStage * 100;
         playerT = GameObject.Find("Player_Unity").GetComponent<Test>();
         CanvasMap = GameObject.Find("Canvas");
         darkSwordTransform = new Vector3(darkSword.transform.position.x, darkSword.transform.position.y, darkSword.transform.position.z);
@@ -42,9 +47,9 @@ public class BossEnemyScript : MonoBehaviour
             yield return new WaitForSeconds(5f);
             GameObject TargetSet = Instantiate(targetTransform);
             TargetSet.transform.position = playerT.transform.position;
-            darkSword.transform.DOMove(new Vector3(TargetSet.transform.position.x+a, TargetSet.transform.position.y, TargetSet.transform.position.z), 2.5f, false);
-            darkSword2.transform.DOMove(new Vector3(TargetSet.transform.position.x + b, TargetSet.transform.position.y, TargetSet.transform.position.z), 2.5f, false) ;
-            yield return new WaitForSeconds(3f);
+            darkSword.transform.DOMove(new Vector3(TargetSet.transform.position.x+a, TargetSet.transform.position.y, TargetSet.transform.position.z), 1f, false);
+            darkSword2.transform.DOMove(new Vector3(TargetSet.transform.position.x + b, TargetSet.transform.position.y, TargetSet.transform.position.z), 1f, false) ;
+            yield return new WaitForSeconds(1f);
             coolBalde(TargetSet);
         }
     }
@@ -58,7 +63,10 @@ public class BossEnemyScript : MonoBehaviour
             Destroy(gameObject);
             GameObject.Find("EnemyManager").GetComponent<EnemyManager>().DelEnemy();
             GameManager.Instance.userData.coin += setCoin;
-            GameManager.Instance.EndState();
+            GameManager.Instance.userData.nowStage++;
+            Destroy(GameManager.Instance.gameObject);
+            Destroy(GameObject.Find("[DOTween]"));
+            SceneManager.LoadScene("GameStart");
         }
         GameObject TextImpact = Instantiate(DamageText, CanvasMap.transform);
         TextImpact.GetComponent<Text>().text = "-" + damage.ToString();

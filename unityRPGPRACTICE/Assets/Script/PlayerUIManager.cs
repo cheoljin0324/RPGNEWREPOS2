@@ -15,7 +15,9 @@ public class PlayerUIManager : MonoBehaviour
     [SerializeField]
     private Test PlayerTest;
     [SerializeField]
-    private Button GameButton;
+    private GameObject GameButton;
+
+
 
     private void Update()
     {

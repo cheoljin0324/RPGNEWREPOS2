@@ -14,6 +14,8 @@ public class Test : MonoBehaviour
     private SkinnedMeshRenderer[] skined;
     ItemDataBase itemData;
     [SerializeField]
+    private GameObject CanvasTuto;
+    [SerializeField]
     Image DamageImage;
     
 
@@ -127,6 +129,10 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+        {
+            CanvasTuto.gameObject.SetActive(false);
+        }
         if (GameManager.Instance.nowState == GameManager.GameState.Gaming)
         {
             if (Hp == 0)

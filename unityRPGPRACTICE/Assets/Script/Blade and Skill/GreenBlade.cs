@@ -46,10 +46,13 @@ public class GreenBlade : AttackBlade
 
     protected override void Skill1()
     {
+        PlayerTransform = GameObject.Find("Player_Unity").GetComponent<Transform>();
         GameManager.Instance.SkillIn = true;
         float Setx = Input.GetAxis("Vertical");
         float Sety = Input.GetAxis("Horizontal");
+        Debug.Log(PlayerTransform.position);
         PlayerTransform.DOMove(new Vector3(PlayerTransform.position.x+(Sety*10), PlayerTransform.position.y, PlayerTransform.position.z+(Setx*10)),0.5f,false);
+        Debug.Log(PlayerTransform.position);
         StartCoroutine(Copy());
         coolTime = 8.0f;
     }
@@ -71,7 +74,7 @@ public class GreenBlade : AttackBlade
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") || other.CompareTag("BossEnemy"))
         {
             if (PlayerT.isAttack == true)
             {

@@ -28,7 +28,7 @@ public class AttackBlade : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy")||other.CompareTag("BossEnemy"))
         {
             if(PlayerT.isAttack == true)
             {

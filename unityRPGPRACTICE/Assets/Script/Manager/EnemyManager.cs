@@ -19,10 +19,10 @@ public class EnemyManager : MonoBehaviour
 
     public DungeonState theDungeon = DungeonState.Idle;
 
-    public void InstantObject(int dungeonsNumber)
+    public void InstantObject(int dungeonsNumber, int EnemyID)
     {
         nowPointer = dungeonsNumber;
-        int set = Random.RandomRange(0, Mob.Length);
+        int set = EnemyID;
         StartCoroutine(SetInstanObject(set, dungeonsNumber));
         theDungeon = DungeonState.Game;
     }
@@ -31,8 +31,11 @@ public class EnemyManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
         nowObject = Instantiate(Mob[set]);
-        nowObject.GetComponent<EnemyTest>().targetCharacter = CharOb;
-        nowObject.GetComponent<EnemyTest>().targetTransform = CharOb.transform;
+        if (set == 0)
+        {
+            nowObject.GetComponent<EnemyTest>().targetCharacter = CharOb;
+            nowObject.GetComponent<EnemyTest>().targetTransform = CharOb.transform;
+        }
         nowObject.transform.position = new Vector3(setTransform[dungeonsNumber].transform.position.x, setTransform[dungeonsNumber].transform.position.y, setTransform[dungeonsNumber].transform.position.z - 2f);
     }
 

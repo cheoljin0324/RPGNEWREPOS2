@@ -6,6 +6,8 @@ public class OnTrap : MonoBehaviour
 {
     [SerializeField]
     private int poinNumber;
+    [SerializeField]
+    private int instantiateObjectID;
     bool setTrap = false;
 
     EnemyManager dungeonManager;
@@ -25,7 +27,7 @@ public class OnTrap : MonoBehaviour
                 gameObject.transform.parent.SendMessage("ShotTrap");
                 if (dungeonManager.theDungeon != EnemyManager.DungeonState.Game)
                 {
-                    GameObject.Find("EnemyManager").GetComponent<EnemyManager>().InstantObject(poinNumber);
+                    GameObject.Find("EnemyManager").GetComponent<EnemyManager>().InstantObject(poinNumber, instantiateObjectID);
                 }
                 setTrap = true;
             }

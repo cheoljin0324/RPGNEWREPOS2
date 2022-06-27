@@ -296,22 +296,24 @@ public class Test : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             StartCoroutine(Damage());
         }
-        else if (collision.gameObject.CompareTag("obstacle"))
+        else if (other.gameObject.CompareTag("obstacle"))
         {
             Hp = 0;
             Debug.Log("You Die by my Trap");
         }
     }
 
+
     IEnumerator Damage()
     {
-        if (nowDamaging == false)
+        if (nowDamaging == false&&isAttack==false)
         {
             nowDamaging = true;
             if (playerState != PlayerState.Dmage && Hp > 0)

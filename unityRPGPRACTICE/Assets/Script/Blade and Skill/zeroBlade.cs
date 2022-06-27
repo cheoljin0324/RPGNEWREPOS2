@@ -54,7 +54,6 @@ public class zeroBlade : AttackBlade
         yield return new WaitForSeconds(5f);
         Shild.GetComponent<MeshRenderer>().material.DOFade(0, 0.5f);
         yield return new WaitForSeconds(0.5f);
-        Destroy(Shild);
         GameManager.Instance.SkillIn = false;
     }
 
